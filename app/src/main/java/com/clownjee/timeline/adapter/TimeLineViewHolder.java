@@ -1,45 +1,32 @@
 package com.clownjee.timeline.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
+import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.clownjee.timeline.R;
-import com.clownjee.timeline.bean.TimeLineItem;
 import com.clownjee.timeline.bean.TimeLineItemType;
-import com.clownjee.timeline.bean.TimeLineStatus;
+import com.clownjee.timeline.databinding.ItemTimelineBinding;
 import com.clownjee.timeline.view.TimeLineView;
 
 /**
  * Created by Clownjee on 2016/3/27.
  */
 public class TimeLineViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    private LinearLayout llyt1;
-    private LinearLayout llytItem;
-    private ImageView ivArrow;
-    private TextView tvPhoneNumber;
-
     private ItemClickListener mListener;
-
-    private TimeLineView timeLineView;
 
     private Context mContext;
 
+    private ItemTimelineBinding mBinding;
+
     public TimeLineViewHolder(View itemView, int type, Context context, ItemClickListener listener) {
         super(itemView);
+        mBinding = DataBindingUtil.bind(itemView);
         this.mListener = listener;
         this.mContext = context;
-        llyt1 = (LinearLayout) itemView.findViewById(R.id.llyt1);
-        llytItem = (LinearLayout) itemView.findViewById(R.id.llyt_item);
-        ivArrow = (ImageView) itemView.findViewById(R.id.iv_arrow);
-        tvPhoneNumber = (TextView) itemView.findViewById(R.id.tv_phone_number);
-        timeLineView = (TimeLineView) itemView.findViewById(R.id.timeLineView);
+        TimeLineView timeLineView = mBinding.timeLineView;
         if (type == TimeLineItemType.ONE) {
             timeLineView.setBeginLine(null);
             timeLineView.setEndLine(null);
@@ -49,35 +36,16 @@ public class TimeLineViewHolder extends RecyclerView.ViewHolder implements View.
             timeLineView.setEndLine(null);
         }
         itemView.setOnClickListener(this);
-        ivArrow.setOnClickListener(this);
-        tvPhoneNumber.setOnClickListener(this);
+        mBinding.ivArrow.setOnClickListener(this);
+        mBinding.tvPhoneNumber.setOnClickListener(this);
     }
 
-    public void setData(TimeLineItem timeLineItem) {
-        if (timeLineItem.isSpread()) {
-            llytItem.setBackgroundColor(Color.parseColor("#FAFAFA"));
-            llyt1.setVisibility(View.VISIBLE);
-            ivArrow.setImageResource(R.drawable.arrow_up);
-        } else {
-            llytItem.setBackgroundColor(Color.parseColor("#FFFFFF"));
-            llyt1.setVisibility(View.GONE);
-            ivArrow.setImageResource(R.drawable.arrow_down);
-        }
+    public ItemTimelineBinding getBinding() {
+        return mBinding;
+    }
 
-        switch (timeLineItem.getStatus()) {
-            case TimeLineStatus.TRANSPORTTING:
-                timeLineView.setTimeLineMarker(ContextCompat.getDrawable(mContext, R.drawable.transportting));
-                break;
-            case TimeLineStatus.WAIT:
-                timeLineView.setTimeLineMarker(ContextCompat.getDrawable(mContext, R.drawable.wait));
-                break;
-            case TimeLineStatus.FINISH:
-                timeLineView.setTimeLineMarker(ContextCompat.getDrawable(mContext, R.drawable.finish));
-                break;
-
-            default:
-                break;
-        }
+    public void setBinding(ItemTimelineBinding binding) {
+        mBinding = binding;
     }
 
     @Override

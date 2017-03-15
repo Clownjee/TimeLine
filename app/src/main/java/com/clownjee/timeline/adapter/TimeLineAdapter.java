@@ -1,12 +1,17 @@
 package com.clownjee.timeline.adapter;
 
+import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.clownjee.timeline.R;
 import com.clownjee.timeline.bean.TimeLineItem;
 import com.clownjee.timeline.bean.TimeLineItemType;
+import com.clownjee.timeline.bean.TimeLineStatus;
+import com.clownjee.timeline.databinding.ItemTimelineBinding;
 
 import java.util.List;
 
@@ -19,14 +24,11 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineViewHolder> {
 
     private ItemClickListener mItemClickListener;
 
-    public TimeLineAdapter(List<TimeLineItem> timeLineItems) {
-        this.timeLineItems = timeLineItems;
-    }
+    private Context mContext;
 
-    @Override
-    public TimeLineViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.item_timeline, null);
-        return new TimeLineViewHolder(view, viewType, parent.getContext(), mItemClickListener);
+    public TimeLineAdapter(Context context, List<TimeLineItem> timeLineItems) {
+        this.mContext = context;
+        this.timeLineItems = timeLineItems;
     }
 
     public void setOnItemClickListener(ItemClickListener listener) {
@@ -34,8 +36,30 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineViewHolder> {
     }
 
     @Override
+    public TimeLineViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        ItemTimelineBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_timeline, parent, false);
+        return new TimeLineViewHolder(binding.getRoot(), viewType, parent.getContext(), mItemClickListener);
+    }
+
+    @Override
     public void onBindViewHolder(TimeLineViewHolder holder, int position) {
-        holder.setData(timeLineItems.get(position));
+        TimeLineItem timeLineItem = timeLineItems.get(position);
+        holder.getBinding().setData(timeLineItem);
+        switch (timeLineItem.getStatus()) {
+            case TimeLineStatus.TRANSPORTTING:
+                holder.getBinding().timeLineView.setTimeLineMarker(ContextCompat.getDrawable(mContext, R.drawable.transportting));
+                break;
+            case TimeLineStatus.WAIT:
+                holder.getBinding().timeLineView.setTimeLineMarker(ContextCompat.getDrawable(mContext, R.drawable.wait));
+                break;
+            case TimeLineStatus.FINISH:
+                holder.getBinding().timeLineView.setTimeLineMarker(ContextCompat.getDrawable(mContext, R.drawable.finish));
+                break;
+
+            default:
+                break;
+        }
+        holder.getBinding().executePendingBindings();
     }
 
     @Override

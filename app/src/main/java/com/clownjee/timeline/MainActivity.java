@@ -1,5 +1,6 @@
 package com.clownjee.timeline;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import com.clownjee.timeline.adapter.ItemClickListener;
 import com.clownjee.timeline.adapter.TimeLineAdapter;
 import com.clownjee.timeline.bean.TimeLineItem;
 import com.clownjee.timeline.bean.TimeLineStatus;
+import com.clownjee.timeline.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,28 +22,30 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
 
     private TimeLineAdapter adapter;
 
+    private ActivityMainBinding mBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        RecyclerView timeLineRecyclerView = (RecyclerView) findViewById(R.id.timeLineRecyclerView);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        RecyclerView timeLineRecyclerView = mBinding.timeLineRecyclerView;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         timeLineRecyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new TimeLineAdapter(initDatas());
+        adapter = new TimeLineAdapter(this,initDatas());
         timeLineRecyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(this);
     }
 
     private List<TimeLineItem> initDatas() {
         timeLineItems = new ArrayList<>();
-        timeLineItems.add(new TimeLineItem( false, TimeLineStatus.FINISH));
+        timeLineItems.add(new TimeLineItem(false, TimeLineStatus.FINISH));
         timeLineItems.add(new TimeLineItem(true, TimeLineStatus.TRANSPORTTING));
         timeLineItems.add(new TimeLineItem(false, TimeLineStatus.WAIT));
         timeLineItems.add(new TimeLineItem(false, TimeLineStatus.WAIT));
-        timeLineItems.add(new TimeLineItem( false, TimeLineStatus.WAIT));
-        timeLineItems.add(new TimeLineItem( false, TimeLineStatus.WAIT));
-        timeLineItems.add(new TimeLineItem( false, TimeLineStatus.WAIT));
+        timeLineItems.add(new TimeLineItem(false, TimeLineStatus.WAIT));
+        timeLineItems.add(new TimeLineItem(false, TimeLineStatus.WAIT));
+        timeLineItems.add(new TimeLineItem(false, TimeLineStatus.WAIT));
         timeLineItems.add(new TimeLineItem(false, TimeLineStatus.WAIT));
         return timeLineItems;
     }
