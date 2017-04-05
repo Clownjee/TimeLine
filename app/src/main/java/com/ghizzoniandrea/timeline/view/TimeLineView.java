@@ -1,4 +1,4 @@
-package com.clownjee.timeline.view;
+package com.ghizzoniandrea.timeline.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,10 +8,10 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.clownjee.timeline.R;
+import com.ghizzoniandrea.timeline.R;
 
 /**
- * Created by Clownjee on 2016/3/27.
+ * Created by ghizzoniandrea on 2016/3/27.
  */
 public class TimeLineView extends View {
 

@@ -10,7 +10,7 @@
 
         <variable
             name="data"
-            type="com.clownjee.timeline.bean.TimeLineItem"/>
+            type="com.ghizzoniandrea.timeline.bean.TimeLineItem"/>
     </data>
 
     <LinearLayout
@@ -218,7 +218,7 @@
 
             </LinearLayout>
 
-            <com.clownjee.timeline.view.TimeLineView
+            <com.ghizzoniandrea.timeline.view.TimeLineView
                 android:id="@+id/timeLineView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

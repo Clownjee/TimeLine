@@ -1,9 +1,9 @@
-package com.clownjee.timeline.adapter;
+package com.ghizzoniandrea.timeline.adapter;
 
 import android.view.View;
 
 /**
- * Created by Clownjee on 2016/3/27.
+ * Created by ghizzoniandrea on 2016/3/27.
  */
 public interface ItemClickListener {
     void onItemClick(View view, int position);

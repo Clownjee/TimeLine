@@ -1,10 +1,10 @@
-package com.clownjee.timeline.util;
+package com.ghizzoniandrea.timeline.util;
 
 import android.databinding.BindingConversion;
 import android.view.View;
 
 /**
- * Created by Clownjee on 2017/3/15.
+ * Created by ghizzoniandrea on 2017/3/15.
  */
 public class Utils {
 

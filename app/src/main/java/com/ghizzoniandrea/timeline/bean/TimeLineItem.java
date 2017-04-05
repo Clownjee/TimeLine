@@ -1,12 +1,12 @@
-package com.clownjee.timeline.bean;
+package com.ghizzoniandrea.timeline.bean;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
-import com.clownjee.timeline.BR;
+import com.ghizzoniandrea.timeline.BR;
 
 /**
- * Created by Clownjee on 2016/3/27.
+ * Created by ghizzoniandrea on 2016/3/27.
  */
 public class TimeLineItem extends BaseObservable {
 

@@ -1,4 +1,4 @@
-package com.clownjee.timeline;
+package com.ghizzoniandrea.timeline;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -7,11 +7,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.clownjee.timeline.adapter.ItemClickListener;
-import com.clownjee.timeline.adapter.TimeLineAdapter;
-import com.clownjee.timeline.bean.TimeLineItem;
-import com.clownjee.timeline.bean.TimeLineStatus;
-import com.clownjee.timeline.databinding.ActivityMainBinding;
+import com.ghizzoniandrea.timeline.adapter.ItemClickListener;
+import com.ghizzoniandrea.timeline.adapter.TimeLineAdapter;
+import com.ghizzoniandrea.timeline.bean.TimeLineItem;
+import com.ghizzoniandrea.timeline.bean.TimeLineStatus;
+import com.ghizzoniandrea.timeline.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;

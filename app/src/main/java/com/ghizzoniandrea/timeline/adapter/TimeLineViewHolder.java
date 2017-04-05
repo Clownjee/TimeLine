@@ -1,4 +1,4 @@
-package com.clownjee.timeline.adapter;
+package com.ghizzoniandrea.timeline.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -6,13 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.clownjee.timeline.R;
-import com.clownjee.timeline.bean.TimeLineItemType;
-import com.clownjee.timeline.databinding.ItemTimelineBinding;
-import com.clownjee.timeline.view.TimeLineView;
+import com.ghizzoniandrea.timeline.R;
+import com.ghizzoniandrea.timeline.bean.TimeLineItemType;
+import com.ghizzoniandrea.timeline.databinding.ItemTimelineBinding;
+import com.ghizzoniandrea.timeline.view.TimeLineView;
 
 /**
- * Created by Clownjee on 2016/3/27.
+ * Created by ghizzoniandrea on 2016/3/27.
  */
 public class TimeLineViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private ItemClickListener mListener;

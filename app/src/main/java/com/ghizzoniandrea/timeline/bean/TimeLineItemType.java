@@ -1,7 +1,7 @@
-package com.clownjee.timeline.bean;
+package com.ghizzoniandrea.timeline.bean;
 
 /**
- * Created by Clownjee on 2016/3/27.
+ * Created by ghizzoniandrea on 2016/3/27.
  */
 public class TimeLineItemType {
 
